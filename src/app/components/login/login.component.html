@@ -1,0 +1,80 @@
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+
+<div class="container_b">
+
+    <div class="fluid">
+        <nav>
+            <div class="nav-link" id="logo">E-Wallet</div>
+            <div class="nav-links">
+                <a routerLink="/home" class="nav-link">Home</a>
+                <a routerLink="/login" class="nav-link">Login</a>
+                <a routerLink="/faq" class="nav-link">FAQ</a>
+                <a routerLink="/contactus" class="nav-link">Contact</a>
+            </div>
+            <div class="signup">
+                <a routerLink="/signup" class="nav-link"><button class="button_s">Sign Up</button></a>
+            </div>
+        </nav>
+
+        <main>
+
+            <div class="joinus">
+                "Join a bank with over
+                <br><br>
+                <div style="color:rgb(2, 194, 194); font-style: normal;">
+                    a million<br><br>
+                </div>customers worldwide
+                <br><br>
+                and make money transfer
+                <br><br>
+                <div style="color: rgb(2, 194, 194); font-style: normal;">
+                    hassle free"
+                </div>
+            </div>
+            <div class="box_l">
+
+                <form #userForm="ngForm" method="post" action="scripts/loginmanager.php">
+                    <h1>Admin Login</h1>
+                    <div class="loginform">
+                        <div>
+                            <input class="input_box" type="text" [(ngModel)]="wallet.name" #nameRef="ngModel"
+                                name="ename" id="ename" placeholder="Username" pattern="[A-Za-z ]{3,}"
+                                title="Only chars are allowed,Min 3 char required" required>
+                            <div *ngIf="nameRef.invalid && (nameRef.touched || nameRef.dirty)">
+                                <p *ngIf="nameRef.errors?.['required']" class="text-danger">Name is required, cant be
+                                    balnk.</p>
+                                <p *ngIf="nameRef.errors?.['pattern']" class="text-danger">Name must have at least 3
+                                    chars, only chars
+                                    are
+                                    allowed.</p>
+                            </div>
+                        </div>
+                        <div>
+                            <input class="input_box" type="password" [(ngModel)]="wallet.password"
+                                #passwordRef="ngModel" name="password" id="passwordId" placeholder="Password"
+                                pattern="[a-zA-Z0-9]{8,}" required>
+                            <div *ngIf="passwordRef.invalid && (passwordRef.touched || passwordRef.dirty)">
+                                <p *ngIf="passwordRef.errors?.['required']" class="text-danger">Password is required,
+                                    cant be balnk.</p>
+                                <p *ngIf="passwordRef.errors?.['pattern']" class="text-danger">Password must be at least
+                                    8 chars.</p>
+                            </div>
+                        </div>
+
+                        <br>
+                        <button type="submit" (click)="submitLoginForm()" class="button_s" name="login_b">Login</button>
+                        <div *ngIf="errorMessage" class="error-message">{{errorMessage}}</div>
+
+                    </div>
+                </form>
+            </div>
+        </main>
+    </div>
+</div>

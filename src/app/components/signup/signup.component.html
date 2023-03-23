@@ -1,0 +1,72 @@
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+
+
+<div class="container_b">
+    <div class="fluid">
+        <nav>
+            <div class="nav-link" id="logo">E-Wallet</div>
+            <div class="nav-links">
+                <a routerLink="/home" class="nav-link">Home</a>
+                <!-- <a routerLink="login" class="nav-link">Services</a> -->
+                <a routerLink="/employees" class="nav-link">FAQ</a>
+                <a routerLink="/contactus" class="nav-link">Contact</a>
+            </div>
+            <div class="signup">
+                <a routerLink="/login"><button class="button_s">Login</button></a>
+            </div>
+        </nav>
+
+        <main style="display: flex; justify-content: center;">
+            <div class="box_l">
+
+
+                <h1>Sign Up</h1>
+                <form #userForm="ngForm" *ngIf="!formSubmitted" method="post">
+
+                    <div class="col-75">
+                        <input class="input_box" type="number" [(ngModel)]="wallet.id" #idRef="ngModel" name="eid"
+                            id="eid" min=0 placeholder="id" title="Enter positve id value" required>
+                        <div *ngIf="idRef.invalid && (idRef.touched || idRef.dirty)">
+                            <p *ngIf="idRef.errors?.['required']" class="text-danger">Id is required, cant be balnk.</p>
+                            <p *ngIf="idRef.errors?.['min']" class="text-danger">Id must be positve.</p>
+                        </div>
+                    </div>
+                    <div>
+                        <input class="input_box" type="text" [(ngModel)]="wallet.name" #nameRef="ngModel" name="ename"
+                            id="ename" placeholder="Username" pattern="[A-Za-z ]{3,}"
+                            title="Only chars are allowed,Min 3 char required" required>
+                        <div *ngIf="nameRef.invalid && (nameRef.touched || nameRef.dirty)">
+                            <p *ngIf="nameRef.errors?.['required']" class="text-danger">Name is required, cant be balnk.
+                            </p>
+                            <p *ngIf="nameRef.errors?.['pattern']" class="text-danger">Name must have at least 3 chars,
+                                only chars are
+                                allowed.</p>
+                        </div>
+                    </div>
+
+                    <div>
+                        <input class="input_box" type="number" [(ngModel)]="wallet.balance" #balanceRef="ngModel"
+                            name="balance" id="balanceId" min=0 placeholder="Balance" required>
+
+                        <div *ngIf="balanceRef.invalid && (balanceRef.touched || balanceRef.dirty)">
+                            <p *ngIf="balanceRef.errors?.['required']" class="text-danger">Balance is required, cant be
+                                blank.</p>
+                            <p *ngIf="balanceRef.errors?.['min']" class="text-danger">Balance must be positive.</p>
+
+                        </div>
+                    </div>
+                    <!-- <input class="input_box" type="email" name="email" placeholder="Email" required> -->
+                    <!-- <input class="input_box" type="password" name="password" placeholder="Password" required> -->
+
+                    <button type="submit" (click)="onSubmit()" [disabled]="!userForm.valid" class="button_s"
+                        value="Submit" name="s_next">Submit</button>
+                </form>
+                <div *ngIf="formSubmitted">
+                    <p>Thank you for submitting the form!</p>
+                </div>
+            </div>
+        </main>

@@ -1,0 +1,45 @@
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- <link rel="stylesheet" href="style.css"> -->
+</head>
+
+<body>
+    <div class="container_b">
+        <div class="fluid">
+            <nav>
+                <div class="nav-link" id="logo">E-Wallet</div>
+                <div class="nav-links">
+                    <a routerLink="/addfunds" class="nav-link">Add Funds</a>
+                    <a routerLink="/withdrawfunds" class="nav-link">WithDraw Funds</a>
+                    <a routerLink="/wallets" class="nav-link">Display All</a>
+                    <a routerLink="/transferfunds" class="nav-link">Transfer Funds</a>
+                </div>
+                <div class="signup">
+                    <a class="nav-link"><button (click)="logout()" class="button_s">Logout</button></a>
+                </div>
+            </nav>
+
+            <main>
+
+                <div class="joinus">
+                    "Join a bank with over
+                    <br><br>
+                    <div style="color:rgb(2, 194, 194); font-style: normal;">
+                        a million<br><br>
+                    </div>customers worldwide
+                    <br><br>
+                    and make money transfer
+                    <br><br>
+                    <div style="color: rgb(2, 194, 194); font-style: normal;">
+                        hassle free"
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+</body>
